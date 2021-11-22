@@ -1,3 +1,9 @@
+ANTES DE TUDO FAÇA:
+
+git fetch
+
+E SINCRONIZE PELO BOTÃO 
+
 PARA FAZER MUDANÇAS USE:
 
 git add .
