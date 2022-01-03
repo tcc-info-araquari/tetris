@@ -11,5 +11,5 @@ We are a competitive platform to play tetris, focused in your fun in this old ga
 Play with friends or alone, make yourself better and better after each game, compete with other players and get the best score to get special privileges!
 
 
-<hr> </hr>
-NOSSO SITE ESTA SENDO SERVIDO EM /docs, MUDANÇAS NO CÓDIGO DA PASTA /docs SERÃO REFLETIDAS NA PÁGINA WEB.
+<br/>
+Big thanks to <a href="https://www.youtube.com/watch?v=rAUn1Lom6dw&ab_channel=freeCodeCamp.org">this channel</a> for the tutorial of the game.
