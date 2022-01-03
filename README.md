@@ -9,3 +9,7 @@
 We are a competitive platform to play tetris, focused in your fun in this old game.
 <br/>
 Play with friends or alone, make yourself better and better after each game, compete with other players and get the best score to get special privileges!
+
+
+<hr> </hr>
+NOSSO SITE ESTA SENDO SERVIDO EM /docs, MUDANÇAS NO CÓDIGO DA PASTA /docs SERÃO REFLETIDAS NA PÁGINA WEB.
