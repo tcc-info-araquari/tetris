@@ -4,6 +4,7 @@ const context = canvas.getContext('2d');
 context.scale(20, 20);
 // (fim) configurando o canvas
 
+pauseGame = false;
 
 // Funções gerais:
 function arenaSweep() {
@@ -145,12 +146,62 @@ function rotate(matrix, dir) {
     }
 }
 
+function pause(){
+    pauseGame = true
+    score.innerText = "PAUSE"
+}
+function unpause(){
+    if(pauseGame == true){
+        pauseGame = false   
+        update(time=0)
+        score.innerText = player.score
+    }
+}
+
+function speedUp(){
+
+        if(player.score/10 == 0){
+            dropInterval = 1000
+        }
+        else if(player.score/10 == 1){
+            dropInterval = 800
+        }
+        else if(player.score/10 == 6){
+            dropInterval = 600
+        }
+        else if(player.score/10 == 12){
+            dropInterval = 500
+        }
+        else if(player.score/10 == 24){
+            dropInterval = 300
+        }
+        else if(player.score/10 == 48){
+            dropInterval = 200
+        }
+        else{
+            dropInterval = dropInterval
+        }
+    
+}
+
+function restart(){
+
+    player.alive = true
+    arena.forEach(row => row.fill(0));
+    player.score = 0;
+    playerReset()
+
+    updateScore();
+
+    update(time=0)
+}
+
 // (fim) funções gerais
 
 // Funções do player:
 function playerDrop() {
     player.pos.y++;
-    if (collide(arena, player)) {
+    if (collide(arena, player) && player.alive == true) {
         player.pos.y--;
         merge(arena, player);
         playerReset();
@@ -174,9 +225,9 @@ function playerReset() {
     player.pos.x = (arena[0].length / 2 | 0) -
                    (player.matrix[0].length / 2 | 0);
     if (collide(arena, player)) {
-        arena.forEach(row => row.fill(0));
-        player.score = 0;
-        updateScore();
+
+        player.alive = false
+        
     }
 }
 
@@ -199,7 +250,11 @@ let dropCounter = 0;
 let dropInterval = 1000;
 
 let lastTime = 0;
+
 function update(time = 0) {
+    if(pauseGame == false && player.alive == true){
+
+    
     const deltaTime = time - lastTime;
 
     dropCounter += deltaTime;
@@ -209,12 +264,18 @@ function update(time = 0) {
 
     lastTime = time;
 
+    speedUp()
     draw();
     requestAnimationFrame(update);
+    } else if (player.alive == false){
+        score.innerText = `Fim! Seu resultado final foi de:${player.score} \n\n Pressione enter para reiniciar`
+    }
+
 }
 
 function updateScore() {
-    document.getElementById('score').innerText = player.score;
+    score = document.getElementById('score')
+    score.innerText = player.score;
 }
 
 document.addEventListener('keydown', event => {
@@ -228,6 +289,12 @@ document.addEventListener('keydown', event => {
         playerRotate(-1);
     } else if (event.keyCode === 87) {
         playerRotate(1);
+    } else if (event.keyCode === 80) {
+        pause();
+    } else if (event.keyCode === 32) {
+        unpause();
+    } else if(event.keyCode === 13){
+        restart()
     }
 });
 
@@ -250,6 +317,7 @@ const player = {
     pos: {x: 0, y: 0},
     matrix: null,
     score: 0,
+    alive: true,
 };
 
 
@@ -257,3 +325,55 @@ const player = {
 playerReset();
 updateScore();
 update();
+
+
+
+
+
+//-------------------DEV MODE -------------------//
+
+dev = null;
+const textDev = document.getElementById("devText")
+const toggle = document.getElementById("DevMode")
+
+toggle.addEventListener("click", checkDevMode)
+
+
+function checkDevMode() {
+
+    if(toggle.checked == true){
+
+    textDev.classList.remove("text-gray-400")
+
+    textDev.classList.add("text-pink-500")
+
+    devMode()
+
+    } else{
+
+    textDev.classList.remove("text-pink-500")
+
+    textDev.classList.add("text-gray-400")
+
+    console.log("deactivating dev mode")
+
+    dev = false
+    }
+}
+
+function devMode(){
+    console.log(
+        "Dev Mode Activated"
+    )
+
+    function toggleModal(){
+        console.log("toggleModal")
+        const modal = document.getElementById('modal');
+        modal.classList.toggle('hidden', false, true);
+        modal.classList.toggle('opacity-0');
+        modal.classList.toggle('pointer-events-none');
+    }
+
+    toggleModal()
+
+}
