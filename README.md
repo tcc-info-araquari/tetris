@@ -12,4 +12,4 @@ Play with friends or alone, make yourself better and better after each game, com
 
 
 <br/>
-Big thanks to <a href="https://www.youtube.com/watch?v=rAUn1Lom6dw&ab_channel=freeCodeCamp.org">this channel</a> for the tutorial of the game.
+Big thanks to <a href="https://youtu.be/H2aW5V46khA">this channel</a> for the tutorial of coding basics of the game, and to this channel who made it in react and teached about it: <a href="https://youtu.be/ZGOaCxX8HIU">React tetris tutorial</a>.
