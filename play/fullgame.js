@@ -7,6 +7,8 @@ context.scale(20, 20);
 pauseGame = false;
 
 // Funções gerais:
+
+// "VARRER" a arena
 function arenaSweep() {
     let rowCount = 1;
     outer: for (let y = arena.length -1; y > 0; --y) {
@@ -25,6 +27,7 @@ function arenaSweep() {
     }
 }
 
+// checar colisões
 function collide(arena, player) {
     const m = player.matrix;
     const o = player.pos;
@@ -40,6 +43,7 @@ function collide(arena, player) {
     return false;
 }
 
+// cria o matrix => @w: width (largura) @h: heigth (altura)
 function createMatrix(w, h) {
     const matrix = [];
     while (h--) {
@@ -48,6 +52,7 @@ function createMatrix(w, h) {
     return matrix;
 }
 
+// cria a peça, recependo o type => @type: recebe uma letra que representa a peça (T,J,L,O,S,Z,I)
 function createPiece(type)
 {
     if (type === 'I') {
@@ -95,6 +100,7 @@ function createPiece(type)
     }
 }
 
+// desenha o matrix da peça => @matrix: objeto que esteja formatado em matrix @offset: posições fora do padrão do objeto
 function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -108,6 +114,7 @@ function drawMatrix(matrix, offset) {
     });
 }
 
+// desenha as coisas.
 function draw() {
     context.fillStyle = '#1B2C37';
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -116,6 +123,7 @@ function draw() {
     drawMatrix(player.matrix, player.pos);
 }
 
+// faz a mescla da arena com o player => @arena: matrix da arena, @player: matrix do player
 function merge(arena, player) {
     player.matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -126,6 +134,7 @@ function merge(arena, player) {
     });
 }
 
+// rotaciona as peças e muda seus matrix => @matrix: matrix das peças, @dir: direção para onde a peça sera girada
 function rotate(matrix, dir) {
     for (let y = 0; y < matrix.length; ++y) {
         for (let x = 0; x < y; ++x) {
@@ -146,10 +155,13 @@ function rotate(matrix, dir) {
     }
 }
 
+// função para pausar o jogo;
 function pause(){
     pauseGame = true
     score.innerText = "PAUSE"
 }
+
+// despausa o jogo, e atualiza os updates
 function unpause(){
     if(pauseGame == true){
         pauseGame = false   
@@ -158,6 +170,7 @@ function unpause(){
     }
 }
 
+// aumenta a velocidade de queda das peças
 function speedUp(){
 
         if(player.score/10 == 0){
@@ -184,6 +197,8 @@ function speedUp(){
     
 }
 
+
+// função para resetar o jogo;
 function restart(){
 
     player.alive = true
@@ -198,7 +213,10 @@ function restart(){
 
 // (fim) funções gerais
 
+
 // Funções do player:
+
+// função para fazer com que as peças caem e rode o jogo;
 function playerDrop() {
     player.pos.y++;
     if (collide(arena, player) && player.alive == true) {
@@ -211,6 +229,8 @@ function playerDrop() {
     dropCounter = 0;
 }
 
+
+// função para fazer a movimentação do player => @offset: mudança em relação a posição passada;
 function playerMove(offset) {
     player.pos.x += offset;
     if (collide(arena, player)) {
@@ -218,6 +238,7 @@ function playerMove(offset) {
     }
 }
 
+// reset do player, cria peças e adiciona o matrix ao player
 function playerReset() {
     const pieces = 'TJLOSZI';
     player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
@@ -231,6 +252,7 @@ function playerReset() {
     }
 }
 
+// lida com areceptação do comando de girar do player => @dir: direção;
 function playerRotate(dir) {
     const pos = player.pos.x;
     let offset = 1;
@@ -332,7 +354,7 @@ update();
 
 //-------------------DEV MODE -------------------//
 
-dev = null;
+dev = falsess;
 const textDev = document.getElementById("devText")
 const toggle = document.getElementById("DevMode")
 
