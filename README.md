@@ -1,15 +1,14 @@
 # tetris-projetointegrador.github.io
 
 ```diff
-@@ How to describe our project? @@
+@@ Como descrever nosso projeto? @@
 
+Nos somos a sua mais nova plataforma para jogar tetris competitivamente.
 
-We are a competitive platform to play tetris, focused in your fun in this old game.
-
-Play with friends or alone, make yourself better and better after each game, compete with other players and get the best score to get special privileges!
+Jogue com amigos, ou sozinho, melhore a cada jogada com suas estatísticas detalhadas, e batalhe contra outros jogadores para alcançar o prestígio máximo!
 ```
 
 <hr/>
-<h3> References: </h3>
+<h3> Referências: </h3>
 
-Big thanks to <a href="https://youtu.be/H2aW5V46khA">this channel</a> for the tutorial of coding basics of the game, and to this channel who made it in react and teached about it: <a href="https://youtu.be/ZGOaCxX8HIU">React tetris tutorial</a>.
+Grandes agradecimentos para <a href="https://youtu.be/H2aW5V46khA">esse canal</a> que fez um tutorial sobre o básico do jogo, e para esse, que fez uma versão em React: <a href="https://youtu.be/ZGOaCxX8HIU">React tetris tutorial</a>.
