@@ -1,3 +1,15 @@
+/*
+ #######  ######   #######   #####        ###  ####### 
+    #     #     #     #     #     #        #   #       
+    #     #     #     #     #              #   #       
+    #     ######      #      #####         #   #####   
+    #     #   #       #           #  ###   #   #       
+    #     #    #      #     #     #  ###   #   #       
+    #     #     #     #      #####   ###  ###  #       
+                                                    
+    Um projeto desenvolvido por: João Felipi Cardoso & Davi Gabriel Tomaz
+*/
+
 // configurando o canvas
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
@@ -351,51 +363,3 @@ update();
 
 
 
-
-//-------------------DEV MODE -------------------//
-
-dev = falsess;
-const textDev = document.getElementById("devText")
-const toggle = document.getElementById("DevMode")
-
-toggle.addEventListener("click", checkDevMode)
-
-
-function checkDevMode() {
-
-    if(toggle.checked == true){
-
-    textDev.classList.remove("text-gray-400")
-
-    textDev.classList.add("text-pink-500")
-
-    devMode()
-
-    } else{
-
-    textDev.classList.remove("text-pink-500")
-
-    textDev.classList.add("text-gray-400")
-
-    console.log("deactivating dev mode")
-
-    dev = false
-    }
-}
-
-function devMode(){
-    console.log(
-        "Dev Mode Activated"
-    )
-
-    function toggleModal(){
-        console.log("toggleModal")
-        const modal = document.getElementById('modal');
-        modal.classList.toggle('hidden', false, true);
-        modal.classList.toggle('opacity-0');
-        modal.classList.toggle('pointer-events-none');
-    }
-
-    toggleModal()
-
-}
