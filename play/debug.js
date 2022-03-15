@@ -1,4 +1,9 @@
 // Find and locate the state of the button of devMode
-dev = document.getElementById("DevMode")
+function verifyDevMode(){
+    dev = document.getElementById("DevMode")
+    dev.checked ? console.log("DevMode is ON") && dev() : console.log("DevMode is OFF")
 
-console.log(dev.checked)
+
+}
+
+dev = document.getElementById("DevMode").addEventListener("click", verifyDevMode)
