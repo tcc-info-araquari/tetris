@@ -1,9 +1,25 @@
+import "./fullgame.js"
+import { colors } from "./fullgame.js"
+
 // Find and locate the state of the button of devMode
-function verifyDevMode(){
-    dev = document.getElementById("DevMode")
-    dev.checked ? console.log("DevMode is ON") && dev() : console.log("DevMode is OFF")
-
-
+function verifyDevMode() {
+    let devBtn = document.getElementById("DevMode")
+    devBtn.checked ? dev() : turnOff()
 }
 
-dev = document.getElementById("DevMode").addEventListener("click", verifyDevMode)
+function dev() {
+    console.log("DevMode is ON")
+    showMenu()
+}
+
+function turnOff() {
+    console.log("DevMode is OFF")
+    menu.classList.toggle("hidden")
+}
+
+const devButton = document.getElementById("DevMode").addEventListener("click", verifyDevMode)
+const menu = document.getElementById("menu")
+
+function showMenu(){
+    menu.classList.toggle("hidden")
+}

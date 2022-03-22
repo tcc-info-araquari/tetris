@@ -16,7 +16,7 @@ const context = canvas.getContext('2d');
 context.scale(20, 20);
 // (fim) configurando o canvas
 
-pauseGame = false;
+var pauseGame = false;
 
 // Funções gerais:
 
@@ -334,7 +334,7 @@ document.addEventListener('keydown', event => {
 
 // (fim) funções do player
 
-const colors = [
+export const colors = [
     null,
     '#FF0D79',
     '#0DC2FF',
@@ -347,7 +347,7 @@ const colors = [
 
 const arena = createMatrix(12, 20);
 
-const player = {
+export const player = {
     pos: {x: 0, y: 0},
     matrix: null,
     score: 0,
